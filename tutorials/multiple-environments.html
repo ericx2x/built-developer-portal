@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <title>Developer.bitcoin.com | Tutorials - Multiple Environments</title>
+    
+        <link rel="stylesheet" href="../css/ap.css">
+        <link rel="icon" type="image/png" href="../img/favicon.png" />
+    
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    
+         <!-- font awesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    
+    </head>
+    <body>
+        
+        <div class="hero top-banner pb-5">
+          <div class="hero-inner-wrap" style="background:url('../img/hero.jpeg') no-repeat center center;">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 top-banner-title">
+                    <h5 class="yellow underline-thin font-weight-bold pb-2">Mainnet and Testnet</h3>
+                    <h1 class="white mt-0 pb-2">Multiple Environments</h1>
+                    <h4 class="white font-weight bold pb-4">Launch a console with the full BITBOX API</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <section class="bounties">
+          <div class="container">
+        
+            <div class="row">
+        
+              <div class="col-12">
+                <p>Imagine you have a $BCH app which you’d like to deploy. However before doing that it seems like you should test it. BITBOX console lets you quickly switch between sending commands to your local instance or your full node running on the cloud. That way you can test your code locally before deploying to a remote server w/ production running $BCH node.</p>
+        
+                <h3 class="yellow">Create new app</h3>
+        
+                <p>Let’s say our newly created $BCH app is just a simple call to <code class="highlighter-rouge">getnetworkinfo</code> but of course it could be much more complex as <code class="highlighter-rouge">BITBOX</code> supports the entire $BCH RPC.</p>
+        
+                <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">BITBOX</span><span class="p">.</span><span class="nx">Network</span><span class="p">.</span><span class="nx">getnetworkinfo</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+                <span class="p">})</span>
+                </code></pre></div></div>
+        
+                <p>To test our code first stub out an app w/ production credentials</p>
+        
+                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitbox new myApp --environment production --restURL example.com
+                </code></pre></div></div>
+        
+                <p>Next open up the newly created <code class="highlighter-rouge">bitbox.js</code> file and add config for your local BITBOX.</p>
+        
+                <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">networks</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="nl">development</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nl">restURL</span><span class="p">:</span> <span class="s2">"https://trest.bitbox.earth/v1/"</span>
+                  <span class="p">},</span>
+                  <span class="nx">production</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nl">restURL</span><span class="p">:</span> <span class="s2">"https://rest.bitbox.earth/v1/"</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+                </code></pre></div></div>
+        
+                <h3 class="yellow">Console</h3>
+        
+                <p>Now when you fire up your BITBOX console you can tell it which environment to connect to by passing <code class="highlighter-rouge">bitbox console</code> an <code class="highlighter-rouge">--environment</code> flag.</p>
+        
+                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bitbox console --environment development
+        
+                &gt; BITBOX.Network.getNetworkInfo().then((result) =&gt; { console.log(result); }, (err) =&gt; { console.log(err); });
+        
+                { version: 130100,
+                  subversion: '/Bitcoin ABC:0.16.2(EB8.0)/',
+                  protocolversion: 70014,
+                  localservices: '000000000000000d',
+                  localrelay: true,
+                  timeoffset: -19,
+                  connections: 8,
+                  networks:
+                   [ { name: 'ipv4',
+                       limited: false,
+                       reachable: true,
+                       proxy: '',
+                       proxy_randomize_credentials: false },
+                     { name: 'ipv6',
+                       limited: false,
+                       reachable: true,
+                       proxy: '',
+                       proxy_randomize_credentials: false },
+                     { name: 'onion',
+                       limited: true,
+                       reachable: false,
+                       proxy: '',
+                       proxy_randomize_credentials: false } ],
+                  relayfee: 5000,
+                  localaddresses:
+                   [ { address: '0600:3c03::f03c:91ff:fe89:dfc4',
+                       port: 8333,
+                       score: 4 } ],
+                  warnings: '' }
+                </code></pre></div></div>
+        
+                <h3 class="yellow">Summary</h3>
+        
+                <p>This is just a small example to show how BITBOX can accelerate your $BCH workflow. You can stub out an app scaffold w/ configuration for <code class="highlighter-rouge">development</code> and <code class="highlighter-rouge">production</code> environments. You have the full $BCH RPC available on the <code class="highlighter-rouge">BITBOX</code> object and you can quickly switch between sending commands to different environments.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Javascript -->
+        <script src="../js/ap.js"></script>
+        <!-- holderjs for temporary placeholder images. -->
+        <!-- <script src="../temp/holder.min.js"></script> -->
+        <!-- convert btc data attributes -->
+        <script src="../js/balance.js"></script>
+        
+        
+        <!-- load global menu and footer -->
+        
+        <script>var BitcoinMenuWidth = 1152;</script>
+        <script>var BitcoinMenuLang = 'en';</script>
+        
+        
+        <script type="text/javascript" src="https://menu.cdn.bitcoindotcom.net/the-footer/dist/universal-footer.js"></script>
+        
+        <script src="https://menu.cdn.bitcoindotcom.net/the-menu/dist/universal-menu.js"></script>
+        
+        <script src="//load.sumome.com/" data-sumo-site-id="bcb14c00c5c15200a12099009a4ed3006f7baf006a28ff001fb49d00e1c0f700" async="async"></script>
+    </body>
+</html>

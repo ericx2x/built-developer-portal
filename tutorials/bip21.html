@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <title>Developer.bitcoin.com | Tutorials - BIP21</title>
+    
+        <link rel="stylesheet" href="../css/ap.css">
+        <link rel="icon" type="image/png" href="../img/favicon.png" />
+    
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    
+         <!-- font awesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    
+    </head>
+    <body>
+        
+        <div class="hero top-banner pb-5">
+          <div class="hero-inner-wrap" style="background:url('../img/hero.jpeg') no-repeat center center;">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 top-banner-title">
+                    <h5 class="yellow underline-thin font-weight-bold pb-2">addresses, labels and amounts</h3>
+                    <h1 class="white mt-0 pb-2">BIP21</h1>
+                    <h4 class="white font-weight bold pb-4">encode/decode BIP21 URIs</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <section class="bounties">
+          <div class="container">
+        
+            <div class="row">
+        
+              <div class="col-12">
+                <p>Bitcoin Cash is all about sending and receiving payments. <a href="https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki">BIP21</a> describes a way to encode payment request information such as address, amount, message etc as a URI. These URIs are a very popular way to share payment requests and you’ll often see them as links in a website or as QR codes. Today we’re releasing <code class="highlighter-rouge">encodeBIP21</code> and <code class="highlighter-rouge">decodeBIP21</code> to make it easy for your app to encode/decode BIP21 $BCH URIs.</p>
+        
+                <h2 id="encodebip21" class='yellow'>encodeBIP21</h2>
+        
+                <p>To encode a BIP21 URI pass in the address as the first argument and an object of options as the 2nd argument. <code class="highlighter-rouge">encodeBIP21</code> will encode the options object as query string parameters. This works for addresses encoded in cashAddr w/ and w/out prefix and legacy base58Check.</p>
+        
+                <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// cashaddr w/ prefix</span>
+                <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="s2">"bitcoincash:qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s"</span><span class="p">;</span>
+                <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="na">amount</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="na">label</span><span class="p">:</span> <span class="s2">"#BCHForEveryone"</span>
+                <span class="p">};</span>
+                <span class="nx">BITBOX</span><span class="p">.</span><span class="nx">BitcoinCash</span><span class="p">.</span><span class="nx">encodeBIP21</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+                <span class="c1">// bitcoincash:qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s?amount=1&amp;label=%23BCHForEveryone</span>
+        
+                <span class="c1">// cashaddr w/out prefix</span>
+                <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="s2">"qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s"</span><span class="p">;</span>
+                <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="na">amount</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="na">label</span><span class="p">:</span> <span class="s2">"#BCHForEveryone"</span>
+                <span class="p">};</span>
+                <span class="nx">BITBOX</span><span class="p">.</span><span class="nx">BitcoinCash</span><span class="p">.</span><span class="nx">encodeBIP21</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+                <span class="c1">// bitcoincash:qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s?amount=1&amp;label=%23BCHForEveryone</span>
+        
+                <span class="c1">// works w/ legacy addresses too</span>
+                <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="s2">"1LPqVeYx4Xa96NYCm4X3jhGhPf2EY6ygna"</span><span class="p">;</span>
+                <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="na">amount</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                  <span class="na">label</span><span class="p">:</span> <span class="s2">"#BCHForEveryone"</span>
+                <span class="p">};</span>
+                <span class="nx">BITBOX</span><span class="p">.</span><span class="nx">BitcoinCash</span><span class="p">.</span><span class="nx">encodeBIP21</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+                <span class="c1">// bitcoincash:qr2tcpvsnca0gaw7jxngtmsvd4ffqdpkxqtfzcd8w3?amount=1&amp;label=%23BCHForEveryone</span>
+                </code></pre></div></div>
+        
+                <h3 id="error-handling" class='yellow'>Error handling</h3>
+        
+                <p><code class="highlighter-rouge">encodeBIP21</code> won’t accept strings or negative values as an <code class="highlighter-rouge">amount</code>.</p>
+        
+                <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// won't accept a string as an amount</span>
+                <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="s2">"bitcoincash:qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s"</span><span class="p">;</span>
+                <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="na">amount</span><span class="p">:</span> <span class="s1">'one'</span><span class="p">,</span>
+                  <span class="na">label</span><span class="p">:</span> <span class="s2">"#BCHForEveryone"</span>
+                <span class="p">};</span>
+                <span class="nx">BITBOX</span><span class="p">.</span><span class="nx">BitcoinCash</span><span class="p">.</span><span class="nx">encodeBIP21</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+                <span class="c1">// TypeError: Invalid amount</span>
+        
+                <span class="c1">// won't accept a negative value as an amount</span>
+                <span class="kd">let</span> <span class="nx">address</span> <span class="o">=</span> <span class="s2">"bitcoincash:qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s"</span><span class="p">;</span>
+                <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="na">amount</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="na">label</span><span class="p">:</span> <span class="s2">"#BCHForEveryone"</span>
+                <span class="p">};</span>
+                <span class="nx">BITBOX</span><span class="p">.</span><span class="nx">BitcoinCash</span><span class="p">.</span><span class="nx">encodeBIP21</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+                <span class="c1">// TypeError: Invalid amount</span>
+                </code></pre></div></div>
+        
+                <h2 id="decodebip21" class='yellow'>decodeBIP21</h2>
+        
+                <p>To decode a BIP21 URI pass in a valid URI.</p>
+        
+                <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">bip21</span> <span class="o">=</span> <span class="s2">"bitcoincash:qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s?amount=1&amp;label=%23BCHForEveryone"</span><span class="p">;</span>
+                <span class="nx">BITBOX</span><span class="p">.</span><span class="nx">BitcoinCash</span><span class="p">.</span><span class="nx">decodeBIP21</span><span class="p">(</span><span class="nx">bip21</span><span class="p">);</span>
+                <span class="c1">// { address: 'qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s', options: { amount: 1, label: '#BCHForEveryone' } }</span>
+                </code></pre></div></div>
+        
+                <h3 id="error-handling-1" class='yellow'>Error handling</h3>
+        
+                <p><code class="highlighter-rouge">decodeBIP21</code> won’t accept incorrectly encoded BIP21 URIs</p>
+        
+                <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">bip21</span> <span class="o">=</span> <span class="s2">"qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s?amount=1&amp;label=%23BCHForEveryone"</span><span class="p">;</span>
+                <span class="nx">BITBOX</span><span class="p">.</span><span class="nx">BitcoinCash</span><span class="p">.</span><span class="nx">decodeBIP21</span><span class="p">(</span><span class="nx">bip21</span><span class="p">);</span>
+                <span class="c1">// Error: Invalid BIP21 URI: qrdsfshx7yzfjl9sfj2khuja5crcu4vaxqrt2qkz5s?amount=1&amp;label=%23BCHForEveryone</span>
+                </code></pre></div></div>
+        
+                <h2 id="summary" class='yellow'>Summary</h2>
+        
+                <p>BIP21 URIs are an extrememly popular way to share payment requests. Now w/ <code class="highlighter-rouge">encodeBIP21</code> and <code class="highlighter-rouge">decodeBIP21</code> your app can create and process them.</p>
+        
+                <h3 id="more-info" class='yellow'>More info</h3>
+        
+                <p>Find out more info about <a href="bitbox/docs/bitcoincash.html#encodeBIP21">encodeBIP21</a></p>
+        
+                <p>Find out more info about <a href="bitbox/docs/bitcoincash.html#decodeBIP21">decodeBIP21</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Javascript -->
+        <script src="../js/ap.js"></script>
+        <!-- holderjs for temporary placeholder images. -->
+        <!-- <script src="../temp/holder.min.js"></script> -->
+        <!-- convert btc data attributes -->
+        <script src="../js/balance.js"></script>
+        
+        
+        <!-- load global menu and footer -->
+        
+        <script>var BitcoinMenuWidth = 1152;</script>
+        <script>var BitcoinMenuLang = 'en';</script>
+        
+        
+        <script type="text/javascript" src="https://menu.cdn.bitcoindotcom.net/the-footer/dist/universal-footer.js"></script>
+        
+        <script src="https://menu.cdn.bitcoindotcom.net/the-menu/dist/universal-menu.js"></script>
+        
+        <script src="//load.sumome.com/" data-sumo-site-id="bcb14c00c5c15200a12099009a4ed3006f7baf006a28ff001fb49d00e1c0f700" async="async"></script>
+    </body>
+</html>

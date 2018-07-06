@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <title>Developer.bitcoin.com | Mining Documentation</title>
+    
+        <link rel="stylesheet" href="../../css/ap.css">
+        <link rel="icon" type="image/png" href="../../img/favicon.png" />
+    
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    
+         <!-- font awesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    
+    </head>
+    <body>
+        
+        <nav class="center-nav">
+          <ul class="inline-list">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../learn.html">Learn</a></li>
+            <li><a href="../../develop.html">Develop</a></li>
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="center-nav">
+          <ul class="inline-list">
+              <li><a href="/bitbox.html">Overview</a></li>
+              <li><a href="/bitbox/docs/getting-started.html">Documentation</a></li>
+          </ul>
+        </nav>
+        
+        <section class="bounties">
+          <div class="container">
+            <div class="section-title text-center pb-4">
+              <h1 class="gray bold">BITBOX Documentation</h1>
+            </div>
+            <div class="row">
+        
+              <div class="col-12 col-md-3 mb-4 text-center">
+        
+                <ul class="nav flex-column text-left">
+                  <li class="nav-item active-link">
+                    <a class="nav-link" href="/bitbox/docs/getting-started.html"><i class="fa fa-home"></i> Getting Started</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/new.html"><i class="fa fa-plus"></i> <code>new</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/console.html"><i class="fa fa-terminal"></i> <code>console</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/paper.html"><i class="fa fa-folder"></i> <code>paper</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/address.html"><i class="fa fa-qrcode"></i> Address</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/bitcoincash.html"><i class="fab fa-btc"></i> Bitcoin Cash</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/block.html"><i class="fa fa-cube"></i> Block</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/blockchain.html"><i class="fa fa-cubes"></i> Blockchain</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/control.html"><i class="fa fa-gamepad"></i> Control</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/crypto.html"><i class="fa fa-link"></i> Crypto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/ecpair.html"><i class="fa fa-key"></i> ECPair</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/generating.html"><i class="fab fa-buromobelexperte"></i> Generating</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/hdnode.html"><i class="fa fa-code-branch"></i> HDNode</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/mining.html"><i class="fa fa-hdd"></i> Mining</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/mnemonic.html"><i class="fa fa-ellipsis-h"></i> Mnemonic</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/network.html"><i class="fa fa-cloud"></i> Network</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/rawtransactions.html"><i class="fa fa-exchange-alt"></i> RawTransactions</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/script.html"><i class="fa fa-code"></i> Script</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/transaction.html"><i class="fa fa-exchange-alt"></i> Transaction</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/transactionbuilder.html"><i class="fa fa-arrows-alt-v"></i> Transaction Builder</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/util.html"><i class="fa fa-cogs"></i> Util</a>
+                  </li>
+                </ul>
+        
+              </div>
+        
+              <div class="col-12 col-md-9 language-javascript">
+                <h2 id='mining' class="contentSubHead isCenter"><i class="fas fa-hdd"></i> Mining</h2>
+                <h3 id='getBlockTemplate'><code>getBlockTemplate</code></h3>
+                <p>
+                  If the request parameters include a 'mode' key, that is used to explicitly select between the default 'template' request or a 'proposal'. It returns data needed to construct a block to work on. For full specification, see BIPs 22, 23, 9, and 145:
+                </p>
+                <ul>
+                  <li>
+                    <a href='https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki'>https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki</a>
+                  </li>
+                  <li>
+                    <a href='https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki'>https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki</a>
+                  </li>
+                  <li>
+                    <a href='https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes'>https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes</a>
+                  </li>
+                  <li>
+                    <a href='https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki'>https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki</a>
+                  </li>
+                </ul>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    template_request (json object, optional): A json object in the following spec
+                  </li>
+                </ol>
+                <pre><code>
+          {
+          "mode":"template"    (string, optional) This must be set to "template", "proposal" (see BIP 23), or omitted
+          "capabilities":[     (array, optional) A list of strings
+             "support"          (string) client side supported feature, 'longpoll', 'coinbasetxn', 'coinbasevalue', 'proposal', 'serverlist', 'workid'
+             ,...
+          ],
+          "rules":[            (array, optional) A list of strings
+             "support"          (string) client side supported softfork deployment
+             ,...
+          ]
+          }
+                    </code></pre>
+                <h4>Result</h4>
+                <pre><code>
+          {
+          "version" : n,                    (numeric) The preferred block version
+          "rules" : [ "rulename", ... ],    (array of strings) specific block rules that are to be enforced
+          "vbavailable" : {                 (json object) set of pending, supported versionbit (BIP 9) softfork deployments
+           "rulename" : bitnumber          (numeric) identifies the bit number as indicating acceptance and readiness for the named softfork rule
+           ,...
+          },
+          "vbrequired" : n,                 (numeric) bit mask of versionbits the server requires set in submissions
+          "previousblockhash" : "xxxx",     (string) The hash of current highest block
+          "transactions" : [                (array) contents of non-coinbase transactions that should be included in the next block
+           {
+              "data" : "xxxx",             (string) transaction data encoded in hexadecimal (byte-for-byte)
+              "txid" : "xxxx",             (string) transaction id encoded in little-endian hexadecimal
+              "hash" : "xxxx",             (string) hash encoded in little-endian hexadecimal (including witness data)
+              "depends" : [                (array) array of numbers
+                  n                          (numeric) transactions before this one (by 1-based index in 'transactions' list) that must be present in the final block if this one is
+                  ,...
+              ],
+              "fee": n,                    (numeric) difference in value between transaction inputs and outputs (in Satoshis); for coinbase transactions, this is a negative Number of the total collected block fees (ie, not including the block
+          subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn't one
+              "sigops" : n,                (numeric) total SigOps cost, as counted for purposes of block limits; if key is not present, sigop cost is unknown and clients MUST NOT assume it is zero
+              "required" : true|false      (boolean) if provided and true, this transaction must be in the final block
+           }
+           ,...
+          ],
+          "coinbaseaux" : {                 (json object) data that should be included in the coinbase's scriptSig content
+           "flags" : "xx"                  (string) key name is to be ignored, and value included in scriptSig
+          },
+          "coinbasevalue" : n,              (numeric) maximum allowable input to coinbase transaction, including the generation award and transaction fees (in Satoshis)
+          "coinbasetxn" : { ... },          (json object) information for coinbase transaction
+          "target" : "xxxx",                (string) The hash target
+          "mintime" : xxx,                  (numeric) The minimum timestamp appropriate for next block time in seconds since epoch (Jan 1 1970 GMT)
+          "mutable" : [                     (array of string) list of ways the block template may be changed
+          "value"                          (string) A way the block template may be changed, e.g. 'time', 'transactions', 'prevblock'
+          ,...
+          ],
+          "noncerange" : "00000000ffffffff",(string) A range of valid nonces
+          "sigoplimit" : n,                 (numeric) limit of sigops in blocks
+          "sizelimit" : n,                  (numeric) limit of block size
+          "curtime" : ttt,                  (numeric) current timestamp in seconds since epoch (Jan 1 1970 GMT)
+          "bits" : "xxxxxxxx",              (string) compressed target of next block
+          "height" : n                      (numeric) The height of the next block
+          }
+                    </code></pre>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.Mining.getBlockTemplate().then((result) => {
+          console.log(result);
+          }, (err) => { console.log(err);
+          });
+                      </code></pre>
+        
+                <h3 id='getMiningInfo'><code>getMiningInfo</code></h3>
+                <p>
+                  Returns a json object containing mining-related information.
+                </p>
+                <h4>Result</h4>
+                <pre><code>
+          {
+          "blocks": nnn,             (numeric) The current block
+          "currentblocksize": nnn,   (numeric) The last block size
+          "currentblocktx": nnn,     (numeric) The last block transaction
+          "difficulty": xxx.xxxxx    (numeric) The current difficulty
+          "errors": "..."            (string) Current errors
+          "networkhashps": nnn,      (numeric) The network hashes per second
+          "pooledtx": n              (numeric) The size of the mempool
+          "chain": "xxxx",           (string) current network name as defined in BIP70 (main, test, regtest)
+          }
+                      </code></pre>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.Mining.getMiningInfo().then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+                      </code></pre>
+        
+                <h3 id='getNetworkHashps'><code>getNetworkHashps</code></h3>
+                <p>
+                  Returns the estimated network hashes per second based on the last n blocks. Pass in [blocks] to override # of blocks, -1 specifies since last difficulty change. Pass in [height] to estimate the network speed at the time when a certain block was found.
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    nblocks (numeric, optional, default=120): The number of blocks, or -1 for blocks since last difficulty change.
+                  </li>
+                  <li>
+                    height (numeric, optional, default=-1): To estimate at the time of the given height.
+                  </li>
+                </ol>
+                <h4>Result</h4>
+                <p>
+                  x (numeric): Hashes per second estimated
+                </p>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.Mining.getNetworkHashps().then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+                      </code></pre>
+        
+                <h3 id='submitBlock'><code>submitBlock</code></h3>
+                <p>
+                  Attempts to submit new block to network. The 'jsonparametersobject' parameter is currently ignored. See https://en.bitcoin.it/wiki/BIP_0022 for full specification.
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    hexdata (string, required): the hex-encoded block data to submit
+                  </li>
+                  <li>
+                    parameters (string, optional): object of optional parameters
+                  </li>
+                </ol>
+                <h4>Result</h4>
+                <p>
+                  legacyAddress <code>string</code> legacy base 58 check encoded address
+                </p>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.Mining.submitBlock(hexdata, parameters).then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+                      </code></pre>
+              </div>
+        
+            </div>
+          </div>
+        </section>
+        
+        <!-- Javascript -->
+        <script src="../../js/ap.js"></script>
+        <!-- holderjs for temporary placeholder images. -->
+        <!-- <script src="../../temp/holder.min.js"></script> -->
+        <!-- convert btc data attributes -->
+        <script src="../../js/balance.js"></script>
+        
+        
+        <!-- load global menu and footer -->
+        
+        <script>var BitcoinMenuWidth = 1152;</script>
+        <script>var BitcoinMenuLang = 'en';</script>
+        
+        
+        <script type="text/javascript" src="https://menu.cdn.bitcoindotcom.net/the-footer/dist/universal-footer.js"></script>
+        
+        <script src="https://menu.cdn.bitcoindotcom.net/the-menu/dist/universal-menu.js"></script>
+        
+        <script src="//load.sumome.com/" data-sumo-site-id="bcb14c00c5c15200a12099009a4ed3006f7baf006a28ff001fb49d00e1c0f700" async="async"></script>
+    </body>
+</html>

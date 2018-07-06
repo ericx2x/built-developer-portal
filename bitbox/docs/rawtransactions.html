@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <title>Developer.bitcoin.com | RawTransactions Documentation</title>
+    
+        <link rel="stylesheet" href="../../css/ap.css">
+        <link rel="icon" type="image/png" href="../../img/favicon.png" />
+    
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    
+         <!-- font awesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    
+    </head>
+    <body>
+        
+        <nav class="center-nav">
+          <ul class="inline-list">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../learn.html">Learn</a></li>
+            <li><a href="../../develop.html">Develop</a></li>
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="center-nav">
+          <ul class="inline-list">
+              <li><a href="/bitbox.html">Overview</a></li>
+              <li><a href="/bitbox/docs/getting-started.html">Documentation</a></li>
+          </ul>
+        </nav>
+        
+        <section class="bounties">
+          <div class="container">
+            <div class="section-title text-center pb-4">
+              <h1 class="gray bold">BITBOX Documentation</h1>
+            </div>
+            <div class="row">
+        
+              <div class="col-12 col-md-3 mb-4 text-center">
+        
+                <ul class="nav flex-column text-left">
+                  <li class="nav-item active-link">
+                    <a class="nav-link" href="/bitbox/docs/getting-started.html"><i class="fa fa-home"></i> Getting Started</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/new.html"><i class="fa fa-plus"></i> <code>new</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/console.html"><i class="fa fa-terminal"></i> <code>console</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/paper.html"><i class="fa fa-folder"></i> <code>paper</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/address.html"><i class="fa fa-qrcode"></i> Address</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/bitcoincash.html"><i class="fab fa-btc"></i> Bitcoin Cash</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/block.html"><i class="fa fa-cube"></i> Block</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/blockchain.html"><i class="fa fa-cubes"></i> Blockchain</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/control.html"><i class="fa fa-gamepad"></i> Control</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/crypto.html"><i class="fa fa-link"></i> Crypto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/ecpair.html"><i class="fa fa-key"></i> ECPair</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/generating.html"><i class="fab fa-buromobelexperte"></i> Generating</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/hdnode.html"><i class="fa fa-code-branch"></i> HDNode</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/mining.html"><i class="fa fa-hdd"></i> Mining</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/mnemonic.html"><i class="fa fa-ellipsis-h"></i> Mnemonic</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/network.html"><i class="fa fa-cloud"></i> Network</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/rawtransactions.html"><i class="fa fa-exchange-alt"></i> RawTransactions</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/script.html"><i class="fa fa-code"></i> Script</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/transaction.html"><i class="fa fa-exchange-alt"></i> Transaction</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/transactionbuilder.html"><i class="fa fa-arrows-alt-v"></i> Transaction Builder</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/util.html"><i class="fa fa-cogs"></i> Util</a>
+                  </li>
+                </ul>
+        
+              </div>
+        
+              <div class="col-12 col-md-9 language-javascript">
+                <h2 id='rawtransactions' class="contentSubHead isCenter"><i class="fas fa-exchange-alt"></i> Rawtransactions</h2>
+                <h3 id='decodeRawTransaction'><code>decodeRawTransaction</code></h3>
+                <p>
+                  Return a JSON object representing the serialized, hex-encoded transaction.
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    hexstring (string, required): The transaction hex string
+                  </li>
+                </ol>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.RawTransactions.decodeRawTransaction('01000000013ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a000000006a4730440220540986d1c58d6e76f8f05501c520c38ce55393d0ed7ed3c3a82c69af04221232022058ea43ed6c05fec0eccce749a63332ed4525460105346f11108b9c26df93cd72012103083dfc5a0254613941ddc91af39ff90cd711cdcde03a87b144b883b524660c39ffffffff01807c814a000000001976a914d7e7c4e0b70eaa67ceff9d2823d1bbb9f6df9a5188ac00000000').then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+        
+          // { txid: 'd86c34adaeae19171fd98fe0ffd89bfb92a1e6f0339f5e4f18d837715fd25758',
+          // hash: 'd86c34adaeae19171fd98fe0ffd89bfb92a1e6f0339f5e4f18d837715fd25758',
+          // size: 191,
+          // version: 1,
+          // locktime: 0,
+          // vin:
+          //  [ { txid: '4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b',
+          //      vout: 0,
+          //      scriptSig: [Object],
+          //      sequence: 4294967295 } ],
+          // vout: [ { value: 12.5, n: 0, scriptPubKey: [Object] } ] }
+                  </code></pre>
+        
+                <h3 id='decodeScript'><code>decodeScript</code></h3>
+                <p>
+                  Decode a hex-encoded script.
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    hexstring (string): the hex encoded script
+                  </li>
+                </ol>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.RawTransactions.decodeScript('4830450221009a51e00ec3524a7389592bc27bea4af5104a59510f5f0cfafa64bbd5c164ca2e02206c2a8bbb47eabdeed52f17d7df668d521600286406930426e3a9415fe10ed592012102e6e1423f7abde8b70bca3e78a7d030e5efabd3eb35c19302542b5fe7879c1a16').then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+        
+          // { asm: '30450221009a51e00ec3524a7389592bc27bea4af5104a59510f5f0cfafa64bbd5c164ca2e02206c2a8bbb47eabdeed52f17d7df668d521600286406930426e3a9415fe10ed59201 02e6e1423f7abde8b70bca3e78a7d030e5efabd3eb35c19302542b5fe7879c1a16',
+          // type: 'nonstandard',
+          // p2sh: 'bitcoincash:pqwndulzwft8dlmqrteqyc9hf823xr3lcc7ypt74ts' }
+                  </code></pre>
+        
+                <h3 id='getRawTransaction'><code>getRawTransaction</code></h3>
+                <p>
+                  Return the raw transaction data. If verbose is 'true', returns an Object with information about 'txid'. If verbose is 'false' or omitted, returns a string that is serialized, hex-encoded data for 'txid'.
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    txid (string, required): The transaction id
+                  </li>
+                  <li>
+                    verbose (bool, optional, default=false): If false, return a string, otherwise return a json object
+                  </li>
+                </ol>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.RawTransactions.getRawTransaction("0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098").then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+        
+          // 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000
+                  </code></pre>
+        
+                <h3 id='sendRawTransaction'><code>sendRawTransaction</code></h3>
+                <p>
+                  Submits raw transaction (serialized, hex-encoded) to local node and network. Also see createrawtransaction and signrawtransaction calls.
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    hexstring <code>string</code> required: The hex string of the raw transaction
+                  </li>
+                </ol>
+                <h4>Result</h4>
+                <p>
+                  hex (string): The transaction hash in hex
+                </p>
+                <h4>Examples</h4>
+                <pre><code>
+          BITBOX.RawTransactions.sendRawTransaction("01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000").then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+        
+          // 0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098
+                  </code></pre>
+              </div>
+        
+            </div>
+          </div>
+        </section>
+        
+        <!-- Javascript -->
+        <script src="../../js/ap.js"></script>
+        <!-- holderjs for temporary placeholder images. -->
+        <!-- <script src="../../temp/holder.min.js"></script> -->
+        <!-- convert btc data attributes -->
+        <script src="../../js/balance.js"></script>
+        
+        
+        <!-- load global menu and footer -->
+        
+        <script>var BitcoinMenuWidth = 1152;</script>
+        <script>var BitcoinMenuLang = 'en';</script>
+        
+        
+        <script type="text/javascript" src="https://menu.cdn.bitcoindotcom.net/the-footer/dist/universal-footer.js"></script>
+        
+        <script src="https://menu.cdn.bitcoindotcom.net/the-menu/dist/universal-menu.js"></script>
+        
+        <script src="//load.sumome.com/" data-sumo-site-id="bcb14c00c5c15200a12099009a4ed3006f7baf006a28ff001fb49d00e1c0f700" async="async"></script>
+    </body>
+</html>

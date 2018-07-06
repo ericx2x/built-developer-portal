@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+        <title>Developer.bitcoin.com | Transaction Documentation</title>
+    
+        <link rel="stylesheet" href="../../css/ap.css">
+        <link rel="icon" type="image/png" href="../../img/favicon.png" />
+    
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    
+         <!-- font awesome icons -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    
+    </head>
+    <body>
+        
+        <nav class="center-nav">
+          <ul class="inline-list">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../learn.html">Learn</a></li>
+            <li><a href="../../develop.html">Develop</a></li>
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="center-nav">
+          <ul class="inline-list">
+              <li><a href="/bitbox.html">Overview</a></li>
+              <li><a href="/bitbox/docs/getting-started.html">Documentation</a></li>
+          </ul>
+        </nav>
+        
+        <section class="bounties">
+          <div class="container">
+            <div class="section-title text-center pb-4">
+              <h1 class="gray bold">BITBOX Documentation</h1>
+            </div>
+            <div class="row">
+        
+              <div class="col-12 col-md-3 mb-4 text-center">
+        
+                <ul class="nav flex-column text-left">
+                  <li class="nav-item active-link">
+                    <a class="nav-link" href="/bitbox/docs/getting-started.html"><i class="fa fa-home"></i> Getting Started</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/new.html"><i class="fa fa-plus"></i> <code>new</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/console.html"><i class="fa fa-terminal"></i> <code>console</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/paper.html"><i class="fa fa-folder"></i> <code>paper</code></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/address.html"><i class="fa fa-qrcode"></i> Address</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/bitcoincash.html"><i class="fab fa-btc"></i> Bitcoin Cash</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/block.html"><i class="fa fa-cube"></i> Block</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/blockchain.html"><i class="fa fa-cubes"></i> Blockchain</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/control.html"><i class="fa fa-gamepad"></i> Control</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/crypto.html"><i class="fa fa-link"></i> Crypto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/ecpair.html"><i class="fa fa-key"></i> ECPair</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/generating.html"><i class="fab fa-buromobelexperte"></i> Generating</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/hdnode.html"><i class="fa fa-code-branch"></i> HDNode</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/mining.html"><i class="fa fa-hdd"></i> Mining</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/mnemonic.html"><i class="fa fa-ellipsis-h"></i> Mnemonic</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/network.html"><i class="fa fa-cloud"></i> Network</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/rawtransactions.html"><i class="fa fa-exchange-alt"></i> RawTransactions</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/script.html"><i class="fa fa-code"></i> Script</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/transaction.html"><i class="fa fa-exchange-alt"></i> Transaction</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/transactionbuilder.html"><i class="fa fa-arrows-alt-v"></i> Transaction Builder</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bitbox/docs/util.html"><i class="fa fa-cogs"></i> Util</a>
+                  </li>
+                </ul>
+        
+              </div>
+        
+              <div class="col-12 col-md-9 language-javascript">
+                <h2 id='Transaction' class="contentSubHead isCenter"><i class="fas fa-exchange-alt"></i> Transaction</h2>
+                <h3 id='details'><code>details</code></h3>
+                <p>
+                  Return details about a Transaction.
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                  <li>
+                    txid or txids <code>String | Array</code> required: Transaction id or array of transaction ids
+                  </li>
+                </ol>
+                <h4>Result</h4>
+                <p>
+                  details <code>Object</code>: Details about Transaction
+                </p>
+                <h4>Examples</h4>
+                <pre><code>
+          // single txid
+          BITBOX.Transaction.details('a85fa3d831ab6b0305e7ff88d2d4941e25a810d4461635df51490653822071a8').then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+        
+          // {
+          //   "txid": "a85fa3d831ab6b0305e7ff88d2d4941e25a810d4461635df51490653822071a8",
+          //   "version": 1,
+          //   "locktime": 0,
+          //   "vin": [
+          //     {
+          //       "coinbase": "04ffff001d029804",
+          //       "sequence": 4294967295,
+          //       "n": 0
+          //     }
+          //   ],
+          //   "vout": [
+          //     {
+          //       "value": "50.00000000",
+          //       "n": 0,
+          //       "scriptPubKey": {
+          //         "hex": "41047737b5d3036fcc149960d41ce31d47c5a47d3a843b23898d28a5e24d1482616860ba5bc61f060586c7ac2b0e7e3ec76e4763cf897d5b8b1110691832c9368f8cac",
+          //         "asm": "047737b5d3036fcc149960d41ce31d47c5a47d3a843b23898d28a5e24d1482616860ba5bc61f060586c7ac2b0e7e3ec76e4763cf897d5b8b1110691832c9368f8c OP_CHECKSIG",
+          //         "addresses": [
+          //           "1QEHawPyyALtoDcXTpQsMNtQCoUswtWRJu"
+          //         ],
+          //         "type": "pubkeyhash"
+          //       },
+          //       "spentTxId": null,
+          //       "spentIndex": null,
+          //       "spentHeight": null
+          //     }
+          //   ],
+          //   "blockhash": "000000001c6aeec19265e9cc3ded8ba5ef5e63fae7747f30bf9c02c7bc8883f0",
+          //   "blockheight": 507,
+          //   "confirmations": 528404,
+          //   "time": 1231973656,
+          //   "blocktime": 1231973656,
+          //   "isCoinBase": true,
+          //   "valueOut": 50,
+          //   "size": 135
+          // }
+        
+          // array of txids
+          BITBOX.Transaction.details(["a85fa3d831ab6b0305e7ff88d2d4941e25a810d4461635df51490653822071a8", "113f1fe1c454a56436d4f93c7c6e315d1ed985d111299e9c2a3e2d3d1e9f177f"]).then((result) => {
+          console.log(result);
+          }, (err) => {
+          console.log(err);
+          });
+        
+          // [ { txid: 'a85fa3d831ab6b0305e7ff88d2d4941e25a810d4461635df51490653822071a8',
+          //   version: 1,
+          //   locktime: 0,
+          //   vin: [ [Object] ],
+          //   vout: [ [Object] ],
+          //   blockhash: '000000001c6aeec19265e9cc3ded8ba5ef5e63fae7747f30bf9c02c7bc8883f0',
+          //   blockheight: 507,
+          //   confirmations: 528728,
+          //   time: 1231973656,
+          //   blocktime: 1231973656,
+          //   isCoinBase: true,
+          //   valueOut: 50,
+          //   size: 135 },
+          // { txid: '113f1fe1c454a56436d4f93c7c6e315d1ed985d111299e9c2a3e2d3d1e9f177f',
+          //   version: 1,
+          //   locktime: 0,
+          //   vin: [ [Object], [Object] ],
+          //   vout: [ [Object], [Object] ],
+          //   blockhash: '000000000000000001da2a49a63fb7d0d0893ebcb892aee3fbbfa47c803f9cf0',
+          //   blockheight: 418195,
+          //   confirmations: 111040,
+          //   time: 1467019582,
+          //   blocktime: 1467019582,
+          //   valueOut: 2.09965689,
+          //   size: 372,
+          //   valueIn: 2.0997689,
+          //   fees: 0.00011201 } ]
+                    </code></pre>
+              </div>
+        
+            </div>
+          </div>
+        </section>
+        
+        <!-- Javascript -->
+        <script src="../../js/ap.js"></script>
+        <!-- holderjs for temporary placeholder images. -->
+        <!-- <script src="../../temp/holder.min.js"></script> -->
+        <!-- convert btc data attributes -->
+        <script src="../../js/balance.js"></script>
+        
+        
+        <!-- load global menu and footer -->
+        
+        <script>var BitcoinMenuWidth = 1152;</script>
+        <script>var BitcoinMenuLang = 'en';</script>
+        
+        
+        <script type="text/javascript" src="https://menu.cdn.bitcoindotcom.net/the-footer/dist/universal-footer.js"></script>
+        
+        <script src="https://menu.cdn.bitcoindotcom.net/the-menu/dist/universal-menu.js"></script>
+        
+        <script src="//load.sumome.com/" data-sumo-site-id="bcb14c00c5c15200a12099009a4ed3006f7baf006a28ff001fb49d00e1c0f700" async="async"></script>
+    </body>
+</html>
